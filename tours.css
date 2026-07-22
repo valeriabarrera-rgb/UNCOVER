@@ -148,14 +148,20 @@ button:hover { background: #009AA6; }
 
 .day p { margin: 8px 0; }
 
-footer {
-  padding: 18px;
+.footer {
+  width: 100%;
+  margin-top: 50px;
   text-align: center;
-  color: white;
-  background: #0A1128;
+  border-top: 1px solid #E0E0E0;
+  padding: 25px 0;
+  font-size: 12px;
+  background-color: transparent;
+  color: #0A1128;
 }
 
-footer p { margin: 0; font-size: 14px; }
+.footer p {
+  margin: 0;
+}
 
 /* Responsive adjustments */
 @media (max-width: 750px) {
