@@ -4,150 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tours - Uncover Bahamas</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #0A1128;
-      background: white;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 30px;
-      border-bottom: 1px solid #dddddd;
-    }
-
-    .brand {
-      color: #0A1128;
-      font-size: 18px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    nav a {
-      margin-left: 30px;
-      color: #0A1128;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    nav a:hover,
-    nav a.active { color: #00C2D1; }
-
-    main {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 35px 30px;
-    }
-
-    section { padding: 0 40px; }
-
-    .options { border-right: 1px solid #dddddd; }
-
-    h1 {
-      margin: 0 0 25px;
-      color: #00B8C8;
-      font-size: 30px;
-    }
-
-    h2 { margin: 0 0 8px; }
-
-    p {
-      margin: 0 0 22px;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    label {
-      display: block;
-      margin: 18px 0 8px;
-      font-weight: bold;
-    }
-
-    .choice {
-      display: block;
-      margin: 13px 0;
-      font-size: 16px;
-      font-weight: normal;
-    }
-
-    .choice input { margin-right: 10px; }
-
-    select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #0A1128;
-      background: #F4F9F9;
-      font-size: 16px;
-    }
-
-    button {
-      margin-top: 25px;
-      padding: 14px 28px;
-      border: 0;
-      border-radius: 5px;
-      color: white;
-      background: #00B8C8;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover { background: #009AA6; }
-
-    .empty {
-      color: #555555;
-      font-size: 16px;
-    }
-
-    .day {
-      margin-bottom: 25px;
-      padding: 18px;
-      border: 1px solid #0A1128;
-      border-radius: 5px;
-      background: #F4F9F9;
-    }
-
-    .day h2 { color: #00B8C8; }
-
-    .day p { margin: 8px 0; }
-
-    footer {
-      padding: 18px;
-      text-align: center;
-      color: white;
-      background: #0A1128;
-    }
-
-    footer p { margin: 0; font-size: 14px; }
-
-    @media (max-width: 750px) {
-      header { flex-direction: column; gap: 15px; }
-      nav a { margin: 0 10px; }
-      main { grid-template-columns: 1fr; }
-      section { padding: 20px 0; }
-      .options { border-right: 0; border-bottom: 1px solid #dddddd; }
-    }
-  </style>
+  <link rel="stylesheet" href="tours.css">
 </head>
 
 <body>
-  <header>
-    <a href="home.html" class="brand">Uncover Bahamas</a>
-
+  <header class="site-header">
+    <div class="brand">
+      <img src="logo.png" alt="Uncover Bahamas" class="brand-mark">
+      <span class="brand-name">Uncover Bahamas</span>
+    </div>
     <nav>
-      <a href="home.html">HOME</a>
-      <a href="aboutus.html">ABOUT US</a>
-      <a href="tours.html" class="active">TOURS</a>
-      <a href="contact.html">CONTACT</a>
+      <ul class="main-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li><a href="tours.html" class="active">TOURS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
     </nav>
   </header>
 
