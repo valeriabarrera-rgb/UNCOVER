@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tours - Uncover Bahamas</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tours.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="18" cy="18" r="17" stroke="#0A1128" stroke-width="1.5"/>
+        <path d="M6 20c3-4 6-4 9 0s6 4 9 0s6-4 6-4" stroke="#00C2D1" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M6 25c3-4 6-4 9 0s6 4 9 0s6-4 6-4" stroke="#FFE600" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name">Uncover Bahamas</span>
+    </div>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#" aria-current="page">Tours</a></li>
+        <li><a href="#">Booking</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Tours - Personalized itineraries</p>
+      <h1>Build your own island story</h1>
+      <p>Tell us what moves you and we will shape the days around it. Real local spots, no cruise ship script, no tourist traps.</p>
+    </div>
+  </section>
+
+  <main class="trip-builder">
+
+    <aside class="filters-panel">
+      <h2>Design your trip</h2>
+      <p class="filters-sub">Tell us what you're into. We'll build a day-by-day plan around it.</p>
+
+      <div class="field-group">
+        <label class="field-label" for="interestInput">What are you into?</label>
+        <div class="interest-input-row">
+          <input type="text" id="interestInput" placeholder="Type an interest, e.g. 'food'…" autocomplete="off">
+          <button type="button" class="add-interest-btn" id="addInterestBtn">Add</button>
+        </div>
+        <p class="interest-hint">Press Enter or click Add. Try: food, hiking, history, nightlife, culture, relaxation, adventure, water, shopping.</p>
+        <div class="interest-chips" id="interestChips"></div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="budgetSelect">Budget</label>
+        <select class="budget-select" id="budgetSelect">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" id="durationLabel">Trip duration</label>
+        <div class="duration-stepper" role="group" aria-labelledby="durationLabel">
+          <button type="button" class="stepper-btn" id="durationMinus" aria-label="Decrease trip length">–</button>
+          <span class="duration-value" id="durationValue">3 days</span>
+          <button type="button" class="stepper-btn" id="durationPlus" aria-label="Increase trip length">+</button>
+        </div>
+      </div>
+
+      <button type="button" class="generate-btn" id="generateBtn">Generate my itinerary</button>
+    </aside>
+
+    <section class="itinerary-panel" id="itineraryPanel" aria-live="polite">
+      <div class="itinerary-empty" id="itineraryEmpty">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="60" cy="60" r="58" stroke="#0A1128" stroke-width="1" stroke-dasharray="4 6"/>
+          <path d="M40 70 L60 45 L80 70 Z" stroke="#0A1128" stroke-width="1.2" fill="none"/>
+          <circle cx="60" cy="80" r="3" fill="#0A1128"/>
+        </svg>
+        <h3>No itinerary yet</h3>
+        <p>Set your interests, budget, and trip length on the left, then click Generate my itinerary to see your day-by-day plan.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Uncover Bahamas. Every itinerary is a starting point. We will fine tune it with you before you book.</p>
+  </footer>
+
+<script>
+/* ============================================================
+   Mock "database" of local experiences.
+   Each activity is tagged with interests, an eligible budget
+   band, and the time of day slot it best fits.
+   ============================================================ */
+const ACTIVITIES = [
+  // FOOD
+  { name: "Arawak Cay Fish Fry", tags: ["food","nightlife"], budget: ["low","medium"], slot: "evening",
+    desc: "Grilled snapper, conch salad, and a live band on the water at Nassau's famous strip of fish shacks." },
+  { name: "Conch Salad Stand Crawl", tags: ["food"], budget: ["low"], slot: "afternoon",
+    desc: "Watch conch cracked and diced to order at three roadside stands, comparing hot sauces along the way." },
+  { name: "Chef's Table at Fish Fry Cove", tags: ["food"], budget: ["high"], slot: "evening",
+    desc: "A private tasting menu of Bahamian classics reimagined, paired with local rum cocktails." },
+  { name: "Straw Market Coffee & Johnny Cake", tags: ["food","shopping"], budget: ["low","medium"], slot: "morning",
+    desc: "Warm johnny cake and Bahamian coffee among the vendor stalls before the market gets busy." },
+
+  // NATURE / WATER / ADVENTURE
+  { name: "Blue Lagoon Snorkel", tags: ["water","nature","adventure"], budget: ["medium","high"], slot: "morning",
+    desc: "A boat out to clear shallow reefs where sea turtles and rays are a near-guarantee." },
+  { name: "Pig Beach Boat Trip", tags: ["water","adventure"], budget: ["high"], slot: "morning",
+    desc: "A day trip out to Exuma's famous swimming pigs, with a stop at Thunderball Grotto." },
+  { name: "Public Beach Morning", tags: ["water","relaxation"], budget: ["low"], slot: "morning",
+    desc: "Free public sand and calm, shallow water. Bring your own towel and settle in." },
+  { name: "Andros Barrier Reef Dive", tags: ["water","adventure","nature"], budget: ["high"], slot: "morning",
+    desc: "A guided dive along the world's third-largest barrier reef, for certified divers." },
+  { name: "Lucayan National Park Hike", tags: ["hiking","nature"], budget: ["low","medium"], slot: "morning",
+    desc: "A boardwalk trail through pine forest and mangrove down to a hidden gold-sand cove." },
+  { name: "Kayak the Mangroves", tags: ["hiking","nature","adventure"], budget: ["medium"], slot: "afternoon",
+    desc: "Paddle a quiet mangrove creek at your own pace, spotting herons and juvenile reef fish." },
+  { name: "Cliff-Jump at the Blue Hole", tags: ["adventure","nature"], budget: ["low","medium"], slot: "afternoon",
+    desc: "A freshwater sinkhole ringed by limestone ledges. Jump in or just float and watch." },
+
+  // CULTURE / HISTORY
+  { name: "Junkanoo Museum Visit", tags: ["culture","history"], budget: ["low"], slot: "afternoon",
+    desc: "Costumes, drums, and cowbells from decades of Junkanoo parades, with stories from local elders." },
+  { name: "Pompey Museum of Slavery & Emancipation", tags: ["history","culture"], budget: ["low"], slot: "morning",
+    desc: "A compact, well-curated museum on the Bahamas' colonial history, housed in a former slave market." },
+  { name: "Fort Charlotte Walking Tour", tags: ["history","culture"], budget: ["low","medium"], slot: "morning",
+    desc: "18th-century ramparts and cannon overlooking the harbor, with a guide who knows every tunnel." },
+  { name: "Pottery & Straw-Weaving Workshop", tags: ["culture","shopping"], budget: ["medium"], slot: "afternoon",
+    desc: "Learn traditional straw-plaiting from a local artisan and take home what you make." },
+  { name: "Gregory Town Art Walk", tags: ["culture","shopping"], budget: ["low","medium"], slot: "afternoon",
+    desc: "Small galleries and studio visits in Eleuthera's surf town, with time to talk to the painters." },
+
+  // NIGHTLIFE / RELAXATION
+  { name: "Rum Cake & Rooftop Cocktails", tags: ["nightlife","food"], budget: ["medium","high"], slot: "evening",
+    desc: "A rooftop bar over the harbor, known for its rum-cake old fashioned and sunset views." },
+  { name: "Live Rake-and-Scrape Show", tags: ["nightlife","culture"], budget: ["low","medium"], slot: "evening",
+    desc: "Traditional Bahamian rake and scrape music at a no frills local club. Expect to dance." },
+  { name: "Casino Night", tags: ["nightlife"], budget: ["high"], slot: "evening",
+    desc: "Tables and a late dinner at one of Nassau's resort casinos." },
+  { name: "Sunset Catamaran Sail", tags: ["relaxation","water"], budget: ["medium","high"], slot: "evening",
+    desc: "An open-bar sail along the coast timed to hit the water right as the sky turns pink." },
+  { name: "Hammock Afternoon at a Beach Bar", tags: ["relaxation"], budget: ["low","medium"], slot: "afternoon",
+    desc: "No plan, just a hammock, a cold Kalik, and the tide coming in." },
+  { name: "Spa Morning", tags: ["relaxation"], budget: ["high"], slot: "morning",
+    desc: "A slow morning of massage and a seaside soaking tub before the day gets going." },
+
+  // SHOPPING
+  { name: "Bay Street Straw Market", tags: ["shopping","culture"], budget: ["low"], slot: "afternoon",
+    desc: "Hundreds of stalls for straw bags, wood carvings, and haggling practice." },
+  { name: "Marina Boutique Row", tags: ["shopping"], budget: ["high"], slot: "afternoon",
+    desc: "Designer swimwear and jewelry boutiques along the yacht marina." },
+
+  // GENERAL / FALLBACK (no strong tag bias, used when interests are broad or unmatched)
+  { name: "Harbor Ferry & Island Views", tags: ["relaxation","water","culture"], budget: ["low","medium"], slot: "morning",
+    desc: "A short public ferry ride between islands, better scenery per dollar than most paid tours." },
+  { name: "Local Market Breakfast", tags: ["food","culture"], budget: ["low"], slot: "morning",
+    desc: "Fruit, fish, and coffee where locals actually eat breakfast, away from the resort strip." },
+  { name: "Golden Hour Beach Walk", tags: ["relaxation","nature"], budget: ["low"], slot: "evening",
+    desc: "An unstructured walk down the shoreline as the light turns gold. Free, and hard to overrate." }
+];
+
+const SLOTS = ["morning", "afternoon", "evening"];
+const SLOT_LABELS = { morning: "Morning", afternoon: "Afternoon", evening: "Evening" };
+
+/* ---------------- State ---------------- */
+let interests = [];
+let duration = 3;
+const MIN_DAYS = 1;
+const MAX_DAYS = 10;
+
+/* ---------------- Elements ---------------- */
+const interestInput = document.getElementById("interestInput");
+const addInterestBtn = document.getElementById("addInterestBtn");
+const interestChips = document.getElementById("interestChips");
+const budgetSelect = document.getElementById("budgetSelect");
+const durationValue = document.getElementById("durationValue");
+const durationMinus = document.getElementById("durationMinus");
+const durationPlus = document.getElementById("durationPlus");
+const generateBtn = document.getElementById("generateBtn");
+const itineraryPanel = document.getElementById("itineraryPanel");
+
+/* ---------------- Interests: add / remove chips ---------------- */
+function addInterest() {
+  const raw = interestInput.value.trim().toLowerCase();
+  if (!raw) return;
+  if (!interests.includes(raw)) {
+    interests.push(raw);
+    renderChips();
+  }
+  interestInput.value = "";
+  interestInput.focus();
+}
+
+function removeInterest(tag) {
+  interests = interests.filter(t => t !== tag);
+  renderChips();
+}
+
+function renderChips() {
+  interestChips.innerHTML = "";
+  interests.forEach(tag => {
+    const chip = document.createElement("span");
+    chip.className = "chip";
+    chip.innerHTML = `${escapeHtml(tag)} <button type="button" aria-label="Remove ${escapeHtml(tag)}">&times;</button>`;
+    chip.querySelector("button").addEventListener("click", () => removeInterest(tag));
+    interestChips.appendChild(chip);
+  });
+}
+
+addInterestBtn.addEventListener("click", addInterest);
+interestInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addInterest();
+  }
+});
+
+/* ---------------- Trip duration stepper ---------------- */
+function renderDuration() {
+  durationValue.textContent = `${duration} day${duration === 1 ? "" : "s"}`;
+  durationMinus.disabled = duration <= MIN_DAYS;
+  durationPlus.disabled = duration >= MAX_DAYS;
+}
+
+durationMinus.addEventListener("click", () => {
+  if (duration > MIN_DAYS) { duration--; renderDuration(); }
+});
+durationPlus.addEventListener("click", () => {
+  if (duration < MAX_DAYS) { duration++; renderDuration(); }
+});
+renderDuration();
+
+/* ---------------- Itinerary generation ---------------- */
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function matchesInterests(activity) {
+  if (interests.length === 0) return true;
+  return activity.tags.some(tag => interests.includes(tag));
+}
+
+function matchesBudget(activity, budget) {
+  return activity.budget.includes(budget);
+}
+
+// Fisher-Yates shuffle so results feel fresh on regeneration
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function generateItinerary() {
+  const budget = budgetSelect.value;
+  const neededSlots = duration * SLOTS.length;
+
+  // Primary pool: matches both interests and budget
+  let pool = ACTIVITIES.filter(a => matchesInterests(a) && matchesBudget(a, budget));
+
+  // Hard failure: nothing matches this budget + interest combination at all
+  if (pool.length === 0) {
+    renderError(`We couldn't find any experiences matching "${interests.join(", ")}" at a ${budget} budget. Try a different budget level or fewer interests.`);
+    return;
+  }
+
+  let usedRepeats = false;
+  if (pool.length < neededSlots) {
+    usedRepeats = true;
+  }
+
+  const days = [];
+  for (let d = 1; d <= duration; d++) {
+    const daySlots = {};
+    SLOTS.forEach(slot => {
+      // Prefer activities matching this exact slot, then fall back to any match
+      let slotPool = shuffle(pool.filter(a => a.slot === slot));
+      if (slotPool.length === 0) slotPool = shuffle(pool);
+      daySlots[slot] = slotPool[Math.floor(Math.random() * slotPool.length)];
+    });
+    days.push(daySlots);
+  }
+
+  renderItinerary(days, usedRepeats, budget);
+}
+
+function renderError(message) {
+  itineraryPanel.innerHTML = `
+    <div class="itinerary-error">
+      <strong>We hit a snag building your itinerary.</strong>
+      ${escapeHtml(message)}
+    </div>
+  `;
+}
+
+function renderItinerary(days, usedRepeats, budget) {
+  const budgetLabel = budget.charAt(0).toUpperCase() + budget.slice(1);
+  const interestLabel = interests.length ? interests.join(", ") : "everything";
+
+  let html = "";
+
+  if (usedRepeats) {
+    html += `<div class="itinerary-notice">Your filters are pretty narrow, so a few experiences repeat across days. Add another interest or widen your budget for more variety.</div>`;
+  }
+
+  html += `
+    <div class="itinerary-header">
+      <h3>Your ${days.length}-day island story</h3>
+      <span>${escapeHtml(budgetLabel)} budget, ${escapeHtml(interestLabel)}</span>
+    </div>
+    <div class="day-route">
+  `;
+
+  days.forEach((daySlots, i) => {
+    html += `
+      <div class="day-card">
+        <div class="day-marker">${i + 1}</div>
+        <h4 class="day-title">Day ${i + 1}</h4>
+    `;
+    SLOTS.forEach(slot => {
+      const activity = daySlots[slot];
+      html += `
+        <div class="slot-row">
+          <div class="slot-label">${SLOT_LABELS[slot]}</div>
+          <div class="slot-content">
+            <h4>${escapeHtml(activity.name)}</h4>
+            <p>${escapeHtml(activity.desc)}</p>
+            <div class="slot-tags">
+              ${activity.tags.map(t => `<span class="slot-tag">${escapeHtml(t)}</span>`).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  });
+
+  html += `</div>`;
+
+  itineraryPanel.innerHTML = html;
+}
+
+generateBtn.addEventListener("click", generateItinerary);
+</script>
+
+</body>
+</html>

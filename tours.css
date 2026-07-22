@@ -1,0 +1,555 @@
+/* ============================================
+   Uncover Bahamas - Tours Page
+   Design tokens
+   ============================================ */
+:root {
+  --ink: #0A1128;
+  --ink-soft: rgba(10, 17, 40, 0.65);
+  --aqua: #00C2D1;
+  --aqua-deep: #009AA6;
+  --navy: #0A1128;
+  --aqua-pale: rgba(0, 194, 209, 0.12);
+  --sand: #F4F9F9;
+  --canary: #FFE600;
+  --canary-deep: #E6CE00;
+  --foam: #FFFFFF;
+  --line: rgba(10, 17, 40, 0.14);
+  --line-soft: rgba(10, 17, 40, 0.08);
+  --shadow: 0 12px 32px rgba(10, 17, 40, 0.10);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --font-display: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--sand);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+:focus {
+  outline: 3px solid var(--aqua);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: var(--foam);
+  border-bottom: 1px solid var(--line-soft);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+}
+
+.main-nav {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.01em;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.main-nav a:hover { color: var(--navy); }
+
+.main-nav a[aria-current="page"] {
+  color: var(--navy);
+  border-bottom-color: var(--canary);
+  font-weight: 600;
+}
+
+/* ============================================
+   Hero
+   ============================================ */
+.hero {
+  position: relative;
+  padding: 72px 40px 96px;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--aqua) 100%);
+  color: var(--foam);
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sand);
+  opacity: 0.85;
+  margin: 0 0 18px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--sand);
+  opacity: 0.92;
+  margin: 0;
+}
+
+/* ============================================
+   Trip builder layout
+   ============================================ */
+.trip-builder {
+  display: flex;
+  gap: 28px;
+  max-width: 1180px;
+  margin: -56px auto 80px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 3;
+}
+
+/* ---------- Filters panel ---------- */
+.filters-panel {
+  background: var(--foam);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  width: 340px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.filters-panel h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.filters-panel .filters-sub {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 0 0 28px;
+}
+
+.field-group {
+  margin-bottom: 24px;
+}
+
+.field-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+.interest-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.interest-input-row input[type="text"] {
+  flex: 1;
+  padding: 11px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--foam);
+  transition: border-color 0.15s ease;
+}
+
+.interest-input-row input[type="text"]:focus {
+  border-color: var(--aqua);
+}
+
+.add-interest-btn {
+  border: 1.5px solid var(--navy);
+  background: var(--navy);
+  color: var(--foam);
+  border-radius: var(--radius-sm);
+  padding: 0 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.add-interest-btn:hover { background: var(--aqua); }
+
+.interest-hint {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  opacity: 0.75;
+  margin: 8px 0 0;
+}
+
+.interest-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--aqua-pale);
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 6px 8px 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.chip button {
+  background: none;
+  border: none;
+  color: var(--navy);
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+}
+
+.chip button:hover { background: rgba(10, 17, 40, 0.14); }
+
+.budget-select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--foam);
+}
+
+.budget-select:focus { border-color: var(--aqua); }
+
+.duration-stepper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.stepper-btn {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: none;
+  background: var(--sand);
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.stepper-btn:hover { background: var(--aqua-pale); }
+
+.duration-value {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.generate-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 8px;
+  background: var(--aqua);
+  color: var(--foam);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.generate-btn:hover { background: var(--aqua-deep); }
+.generate-btn:active { transform: scale(0.98); }
+
+/* ---------- Itinerary panel ---------- */
+.itinerary-panel {
+  background: var(--foam);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 40px;
+  min-height: 480px;
+  flex-grow: 1;
+}
+
+.itinerary-empty {
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.itinerary-empty svg {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 18px;
+  opacity: 0.5;
+}
+
+.itinerary-empty h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.itinerary-empty p {
+  font-size: 0.9rem;
+  max-width: 320px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.itinerary-error {
+  background: #FDECE8;
+  border: 1.5px solid #F3B7A8;
+  color: #9C3A1F;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.itinerary-error strong { display: block; margin-bottom: 4px; }
+
+.itinerary-notice {
+  background: var(--aqua-pale);
+  color: var(--navy);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.itinerary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.itinerary-header h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.itinerary-header span {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Day route: a vertical dotted line connecting day markers,
+   because the itinerary really is a sequence. The order carries
+   the trip's own logic (day 1 leads to day 2). */
+.day-route {
+  padding-left: 44px;
+  border-left: 2px dashed var(--line);
+  margin-left: 15px;
+}
+
+.day-card {
+  position: relative;
+  margin-bottom: 36px;
+}
+
+.day-card:last-child { margin-bottom: 0; }
+
+.day-marker {
+  position: absolute;
+  left: -44px;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--foam);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.day-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 2px 0 14px;
+}
+
+.slot-row {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.day-card .slot-row:first-of-type { border-top: none; padding-top: 0; }
+
+.slot-label {
+  width: 90px;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-top: 2px;
+}
+
+.slot-content h4 {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.slot-content p {
+  margin: 0 0 8px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.slot-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.slot-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  background: var(--aqua-pale);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.site-footer {
+  text-align: center;
+  padding: 28px 40px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 880px) {
+  .trip-builder {
+    flex-direction: column;
+    margin-top: -40px;
+  }
+
+  .filters-panel {
+    width: auto;
+  }
+
+  .site-header { padding: 16px 20px; }
+  .main-nav { display: none; }
+  .hero { padding: 56px 20px 72px; }
+  .trip-builder { padding: 0 20px; }
+  .itinerary-panel { padding: 28px 22px; }
+  .slot-row { flex-direction: column; gap: 4px; }
+  .slot-label { width: auto; }
+}

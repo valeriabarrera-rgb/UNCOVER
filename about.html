@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> About Us - Uncover Bahamas</title>
+
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            background-color: #F4F9F9; 
+            color: #0A1128;        
+            margin: 0;
+            padding: 0;
+            }
+
+            h1, h2, h3 {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            }
+
+            .navbar {
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 100px; 
+            border-bottom: 2px solid #E0E0E0;
+            }
+
+            .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            color: #0A1128;
+            }
+
+            .navbar a {
+            color: #0A1128;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            }
+
+            .navbar a.active {
+            color: #00C2D1; 
+            border-bottom: 2px solid #00C2D1;
+            padding-bottom: 5px;
+            }
+
+            .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 30px;
+            }
+
+            .about-hero {
+            text-align: left;
+            margin-bottom: 30px;
+            padding: 0px;  
+            } 
+            
+            .about-hero h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #0A1128;
+            }
+
+            .about-hero p {
+            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 25px;
+            color: #333333;
+            }
+            
+            .btn-primary {
+            display: inline-block;
+            background-color: #00C2D1;
+            color: #0A1128;
+            padding: 12px 28px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            }
+
+
+            .divider {
+            border: 0;
+            height: 2px;
+            background-color: #00C2D1;
+            margin: 30px 0;
+            }
+
+            .vision-container {
+            display: flex;
+            gap: 30px;
+            align-items: stretch;
+            }
+
+            .vision-content {
+            flex: 0 0 60%;
+            text-align: left;
+            }
+
+            .vision-content h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #0A1128;
+            }
+
+            .vision-content p {
+            line-height: 1.8;
+            font-size: 15px;
+            color: #333333;
+            margin-bottom: 25px;
+            }
+
+            .instruction-text {
+            font-style: italic;
+            color: #666666;
+            margin-bottom: 20px;
+            }
+
+            .pillars-stack {
+            display: flex;
+            flex-direction: column; 
+            gap: 15px;
+            }
+
+            .pillar-card {
+            background-color: #FFFFFF;
+            border: 2px solid #00C2D1;
+            border-radius: 8px;
+            padding: 20px 25px;
+            cursor: pointer;
+            text-align: left;
+            }
+
+            .pillar-card h3 {
+            margin: 0;
+            font-size: 16px;
+            }
+
+            .pillar-details {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            }
+
+            .pillar-card.active {
+            background-color: #00C2D1; 
+            color: #FFFFFF;
+            }
+
+            .pillar-card.active .pillar-details {
+            display: block;
+            }
+
+            .vision-image-wrapper {
+                flex: 0 0 40%;
+            }
+
+            .side-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            }
+
+            footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #0A1128; 
+            color: #FFFFFF;
+            margin-top: 60px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="navbar">
+           <div class="logo">UNCOVER BAHAMAS</div>
+            <nav>
+                <a href="index.html">HOME</a>
+                <a href="about.html" class="active">ABOUT US</a>
+                <a href="tours.html">TOURS</a>
+                <a href="contact.html">CONTACT</a>  
+            </nav>
+        </div>
+
+        <div class="container">
+            
+            <div class="about-hero">
+            <h1>ABOUT UNCOVER BAHAMAS</h1>
+            <p>
+                We build authentic, effortless travel experiences <strong>designed to help you explore beyond the ordinary!</strong> 
+                Say goodbye to generic tourist traps, long lines, and hours spent stressing over daily logistics. 
+                Our curated island-hopping adventures connect you directly with warm local Bahamian culture, secret cays, 
+                and hidden beaches you won't find on a standard cruise itinerary.
+            </p>
+
+            <p>
+                Founded by a team of passionate island enthusiasts, we handle every detail, from smooth water transport 
+                to local guide partnerships so you can focus on simply soaking up the sunshine and making unforgettable memories.
+            </p>
+
+            <a href="tours.html" class="btn-primary">EXPLORE TOURS</a>
+        </div>
+
+        <hr class="divider">
+
+        <div class="vision-container">
+
+            <div class="vision-content">
+            <h2>OUR VISION</h2>
+            <p>
+                Our vision is to make sustainable, local travel effortless for every explorer. 
+                By pairing local insights with personalized travel options, we ensure every trip supports 
+                local communities while giving you the authentic adventure you deserve.
+            </p>
+           
+            <p class="instruction-text">Click any card below to reveal our curation standards!</p>
+            
+            <div class="pillars-stack">
+
+                <!-- Pillar Card 1 -->
+                <div class="pillar-card" onclick="togglePillar(this)">
+                    <h3>Authentic Culture</h3>
+                    <p class="pillar-details">
+                        We partner directly with local Bahamian guides and family-owned spots.
+                    </p>
+                </div>
+
+                <!-- Pillar Card 2 -->
+                <div class="pillar-card" onclick="togglePillar(this)">
+                    <h3>Zero Logistics Stress</h3>
+                    <p class="pillar-details">
+                        We handle all transportation and daily schedules so you can relax.
+                    </p>
+                </div>
+
+                <!-- Pillar Card 3 -->
+                <div class="pillar-card" onclick="togglePillar(this)">
+                    <h3>Hidden Gems Only</h3>
+                    <p class="pillar-details">
+                        We skip overcrowded spots to take you to secluded beaches and secret spots.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="vision-image-wrapper">
+            <img src="bahamas-boat.jpg" class="side-img">
+        </div>
+
+        </div>
+
+        <footer>
+        <p>&copy; 2026 Uncover Travel. All rights reserved.</p>
+        </footer>
+
+        <script>
+            function togglePillar(cardElement) {
+                cardElement.classList.toggle('active');
+            }
+        </script>
+    </body>
+</html>
