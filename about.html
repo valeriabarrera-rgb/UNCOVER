@@ -201,12 +201,19 @@
             border-radius: 8px;
             }
 
-            footer {
+            .footer {
+            width: 100%;
+            margin-top: 50px;
             text-align: center;
-            padding: 15px;
-            background-color: #0A1128; 
-            color: #FFFFFF;
-            margin-top: 60px;
+            border-top: 1px solid #E0E0E0;
+            padding: 25px 0;
+            font-size: 12px;
+            background-color: transparent;
+            color: #0A1128;
+            }
+
+            .footer p {
+            margin: 0;
             }
         </style>
     </head>
@@ -293,9 +300,11 @@
             <img src="bahamas-boat.jpg" class="side-img">
         </div>
 
-        </div>
+        </div> <!-- Closes .vision-container -->
 
-        <footer>
+        </div> <!-- Closes .container (This fixes the layout issue!) -->
+
+        <footer class="footer">
         <p>&copy; 2026 Uncover Travel. All rights reserved.</p>
         </footer>
 
